@@ -4,18 +4,39 @@
 //  mutは値が変更可能であることを示す
 //  u32型は32ビット符号なし整数
 //  [u32]型はu32のスライス(一次元の配列みたいなものだと思ってくれ)
-pub fn sort(x: &mut [u32], up: bool)
-{
-    // unimplementedマクロは「未実装」の意味。実行するとpanicする
+pub fn sort(x: &mut [u32], up: bool) {
+    /* // unimplementedマクロは「未実装」の意味。実行するとpanicする
     unimplemented!();
+    */
+    if x.len() > 1 {
+        let mid_point = x.len() / 2;
+        sort(&mut x[..mid_point], true);
+        sort(&mut x[mid_point..], false);
+        sub_sort(x, up);
+    }
 }
 
-fn sub_sort(x: &mut [u32], up: bool)
-{
+fn sub_sort(x: &mut [u32], up: bool) {
+    /*
     unimplemented!();
+    */
+    if x.len() > 1 {
+        compare_and_swap(x, up);
+        let mid_point = x.len() / 2;
+        sub_sort(&mut x[..mid_point], up);
+        sub_sort(&mut x[mid_point..], up);
+    }
 }
 
-fn compare_and_swap(x: &mut [u32], up: bool)
-{
+fn compare_and_swap(x: &mut [u32], up: bool) {
+    /*
     unimplemented!();
+    */
+    let mid_point = x.len() / 2;
+    for i in 0..mid_point {
+        if (x[i] > x[mid_point + i]) == up {
+            // 要素を交換する
+            x.swap(i, mid_point + i);
+        }
+    }
 }
