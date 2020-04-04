@@ -1,5 +1,5 @@
 [package]
-name = "bitonic-sorter"
+name = "Chapter4"
 version = "0.1.0"
 authors = ["arch-yzk <archc18yh27zno3k@gmail.com>"]
 edition = "2018"
